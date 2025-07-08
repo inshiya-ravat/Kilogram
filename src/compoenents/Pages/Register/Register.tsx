@@ -38,7 +38,6 @@ const Register = () => {
   const handleSubmit = async () => {
     try {
       const response = await dispatch(registerUser(formData)).unwrap();
-      console.log(response);
       if(response?.status === 201){
        navigate(ROUTE.LOGIN);
       }

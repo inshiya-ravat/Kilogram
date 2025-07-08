@@ -1,4 +1,3 @@
-import { Button, Checkbox, Form, Input, notification, Typography } from "antd";
 import IconKilogram from "../../../assets/IconKilogram";
 import { useAppDispatch } from "../../../store/hook";
 import { useState, type ChangeEvent } from "react";
@@ -10,8 +9,14 @@ import {
   type CreateAuthFormType,
 } from "../../../types/FormFields";
 import { createAuthFormRules } from "../../../constants/rules.constants";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { ROUTE } from "../../../constants/routes.constants";
+import Typography from "antd/es/typography";
+import notification from "antd/es/notification";
+import Form from "antd/es/form";
+import Input from "antd/es/input";
+import Checkbox from "antd/es/checkbox";
+import Button from "antd/es/button";
 
 const { Title, Text } = Typography;
 
@@ -97,7 +102,7 @@ const Login = () => {
         </div>
         <div className={styles.signupRedirect}>
           <Text>
-            Don't have an account? <a href="/register">Sign up</a>
+            Don't have an account? <Link to={ROUTE.REGISTER}>Sign up</Link>
           </Text>
         </div>
       </div>

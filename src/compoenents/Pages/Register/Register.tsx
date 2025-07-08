@@ -1,7 +1,6 @@
 import { useState, type ChangeEvent } from "react";
 import { useAppDispatch, useAppSelector } from "../../../store/hook";
 import { registerUser } from "../../../store/users";
-import { Button, Form, Input, notification, Typography } from "antd";
 import styles from "./Register.module.css";
 import IconKilogram from "../../../assets/IconKilogram";
 import { Link, useNavigate } from "react-router-dom";
@@ -12,6 +11,11 @@ import {
 } from "../../../types/FormFields";
 import { createAuthFormRules } from "../../../constants/rules.constants";
 import { ROUTE } from "../../../constants/routes.constants";
+import Typography from "antd/es/typography";
+import notification from "antd/es/notification";
+import Form from "antd/es/form";
+import Input from "antd/es/input";
+import Button from "antd/es/button";
 
 const { Title, Text } = Typography;
 
@@ -113,7 +117,7 @@ const Register = () => {
         </div>
         <div className={styles.loginRedirect}>
           <Text>
-            Have an account? <Link to="/login">Log in</Link>
+            Have an account? <Link to={ROUTE.LOGIN}>Log in</Link>
           </Text>
         </div>
       </div>

@@ -1,4 +1,3 @@
-import { Drawer, Menu } from "antd";
 import { Link } from "react-router-dom";
 import {
   HomeOutlined,
@@ -16,6 +15,8 @@ import IconKilogram from "../../assets/IconKilogram";
 import { useState } from "react";
 import UnderConstruction from "../ConstructionFallback/UnderConstruction";
 import { ROUTE } from "../../constants/routes.constants";
+import Menu from "antd/es/menu";
+import Drawer from "antd/es/drawer";
 
 const Sidebar = () => {
   const [openNotification,setOpenNotification] = useState(false);

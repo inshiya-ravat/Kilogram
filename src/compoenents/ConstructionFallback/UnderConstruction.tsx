@@ -1,6 +1,7 @@
-import { Result, Typography } from "antd";
 import { ToolOutlined } from "@ant-design/icons";
 import styles from "./UnderConstruction.module.css";
+import Typography from "antd/es/typography";
+import Result from "antd/es/result";
 
 const { Title, Paragraph } = Typography;
 

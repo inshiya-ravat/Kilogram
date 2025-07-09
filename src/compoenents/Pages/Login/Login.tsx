@@ -1,6 +1,5 @@
 import IconKilogram from "../../../assets/IconKilogram";
 import { useAppDispatch } from "../../../store/hook";
-import { useState, type ChangeEvent } from "react";
 import { loginUser } from "../../../store/users";
 import styles from "../Register/Register.module.css";
 import { useForm, type FormProps } from "antd/es/form/Form";

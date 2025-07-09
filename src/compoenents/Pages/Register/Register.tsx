@@ -1,4 +1,3 @@
-import { useState, type ChangeEvent } from "react";
 import { useAppDispatch, useAppSelector } from "../../../store/hook";
 import { registerUser } from "../../../store/users";
 import styles from "./Register.module.css";

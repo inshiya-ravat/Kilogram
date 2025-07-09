@@ -16,7 +16,7 @@ export const registerUser = createAsyncThunk(
       return response;
     } catch (error: unknown) {
       if (error instanceof Error) {
-        console.error(error.message);
+        throw error.message;
       }
     }
   }
@@ -34,7 +34,7 @@ export const loginUser = createAsyncThunk(
       }
     } catch (error: unknown) {
       if (error instanceof Error) {
-        console.error(error.message);
+        throw error.message;
       }
     }
   }

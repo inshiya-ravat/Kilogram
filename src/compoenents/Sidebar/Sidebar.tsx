@@ -15,6 +15,7 @@ import Typography from "antd/es/typography";
 import IconKilogram from "../../assets/IconKilogram";
 import { useState } from "react";
 import UnderConstruction from "../ConstructionFallback/UnderConstruction";
+import { ROUTE } from "../../constants/routes.constants";
 
 const Sidebar = () => {
   const [openNotification,setOpenNotification] = useState(false);
@@ -40,7 +41,7 @@ const Sidebar = () => {
       </Typography.Title>
       <Menu mode="vertical" className={styles.menu}>
         <Menu.Item key="home" icon={<HomeOutlined />}>
-          <Link to="/">Home</Link>
+          <Link to={ROUTE.HOME}>Home</Link>
         </Menu.Item>
         <Menu.Item key="search" icon={<SearchOutlined />}>
           <Link to="#" type="button" onClick={openSearchNotification}>Search</Link>
@@ -54,13 +55,13 @@ const Sidebar = () => {
           </Drawer>
         </Menu.Item>
         <Menu.Item key="explore" icon={<CompassOutlined />}>
-          <Link to="/explore">Explore</Link>
+          <Link to={ROUTE.EXPLORE}>Explore</Link>
         </Menu.Item>
         <Menu.Item key="reels" icon={<VideoCameraOutlined />}>
-          <Link to="/reel">Reels</Link>
+          <Link to={ROUTE.REEL}>Reels</Link>
         </Menu.Item>
         <Menu.Item key="chat" icon={<MessageOutlined />}>
-          <Link to="/chat">Chats</Link>
+          <Link to={ROUTE.CHAT}>Chats</Link>
         </Menu.Item>
         <Menu.Item key="notifcation" icon={<NotificationOutlined />}>
           <Link to="#" type="button" onClick={openNotificationDrawer}>Notifications</Link>
@@ -74,10 +75,10 @@ const Sidebar = () => {
           </Drawer>
         </Menu.Item>
         <Menu.Item key="profile" icon={<UserOutlined />}>
-          <Link to="/profile">Profile</Link>
+          <Link to={ROUTE.PROFILE}>Profile</Link>
         </Menu.Item>
         <Menu.Item key="settings" icon={<SettingOutlined />}>
-          <Link to="/settings">Settings</Link>
+          <Link to={ROUTE.SETTINGS}>Settings</Link>
         </Menu.Item>
       </Menu>
     </div>

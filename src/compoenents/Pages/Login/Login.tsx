@@ -25,15 +25,23 @@ const Login = () => {
   const [api, contextHolder] = useNotification();
   const navigate = useNavigate();
 
-  const handleSubmit:FormProps<Omit<CreateAuthFormType,"email">>['onFinish'] = async (value) => {
+  const handleSubmit:FormProps<Omit<CreateAuthFormType,"email">>['onFinish'] = async () => {
     try {
-      const response = await dispatch(loginUser(value)).unwrap();
+      await form.validateFields();
+      const formValues = form.getFieldsValue();
+      const formData = {
+        [CreateAuthForm.Username]:
+          formValues[CreateAuthForm.Username]?.trim() || "",
+        [CreateAuthForm.Password]:
+          formValues[CreateAuthForm.Password]?.trim() || "",
+      };
+      const response = await dispatch(loginUser(formData)).unwrap();
       if(response?.status === 200){
         navigate(ROUTE.HOME);
       }
-    } catch (error) {
+    } catch {
       api.error({
-        message: `Log in failed: ${error}`,
+        message: `Log in failed`,
         placement: "topRight",
       });
     }

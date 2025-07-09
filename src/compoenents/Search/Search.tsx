@@ -2,7 +2,7 @@ import UnderConstruction from "../ConstructionFallback/UnderConstruction"
 
 const Search = () => {
   return (
-    <UnderConstruction/>
+    <UnderConstruction name="Search"/>
   )
 }
 

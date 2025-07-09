@@ -26,16 +26,25 @@ const Register = () => {
   const navigate = useNavigate();
 
   const handleSubmit: FormProps<CreateAuthFormType>["onFinish"] = async (
-    value
   ) => {
     try {
-      const response = await dispatch(registerUser(value)).unwrap();
+      await form.validateFields();
+      const formValues = form.getFieldsValue();
+      const formData = {
+        [CreateAuthForm.Username]:
+          formValues[CreateAuthForm.Username]?.trim() || "",
+        [CreateAuthForm.Email]: formValues[CreateAuthForm.Email]?.trim() || "",
+        [CreateAuthForm.Password]:
+          formValues[CreateAuthForm.Password]?.trim() || "",
+      };
+
+      const response = await dispatch(registerUser(formData)).unwrap();
       if (response?.status === 201) {
         navigate(ROUTE.LOGIN);
       }
-    } catch (error) {
+    } catch {
       api.error({
-        message: `Registration failed: ${error}`,
+        message: `Registration failed`,
         placement: "topRight",
       });
     }

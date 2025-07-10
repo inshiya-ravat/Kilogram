@@ -2,7 +2,7 @@ import UnderConstruction from "../ConstructionFallback/UnderConstruction"
 
 const Notification = () => {
   return (
-    <UnderConstruction/>
+    <UnderConstruction name="Notification"/>
   )
 }
 

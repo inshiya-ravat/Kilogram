@@ -15,6 +15,7 @@ import Form from "antd/es/form";
 import Input from "antd/es/input";
 import Button from "antd/es/button";
 import useNotification from "antd/es/notification/useNotification";
+import { AUTH_ERROR } from "../../../constants/error.constants";
 
 const { Title, Text } = Typography;
 
@@ -25,17 +26,25 @@ const Register = () => {
   const [api, contextHolder] = useNotification();
   const navigate = useNavigate();
 
-  const handleSubmit: FormProps<CreateAuthFormType>["onFinish"] = async (
-    value
-  ) => {
+  const handleSubmit: FormProps<CreateAuthFormType>["onFinish"] = async () => {
     try {
-      const response = await dispatch(registerUser(value)).unwrap();
+      await form.validateFields();
+      const formValues = form.getFieldsValue();
+      const formData = {
+        [CreateAuthForm.Username]:
+          formValues[CreateAuthForm.Username]?.trim() || "",
+        [CreateAuthForm.Email]: formValues[CreateAuthForm.Email]?.trim() || "",
+        [CreateAuthForm.Password]:
+          formValues[CreateAuthForm.Password]?.trim() || "",
+      };
+
+      const response = await dispatch(registerUser(formData)).unwrap();
       if (response?.status === 201) {
         navigate(ROUTE.LOGIN);
       }
-    } catch (error) {
+    } catch {
       api.error({
-        message: `Registration failed: ${error}`,
+        message: AUTH_ERROR.REGISTER_FAIL,
         placement: "topRight",
       });
     }

@@ -10,7 +10,7 @@ const MainLayout = () => {
       <Sider>
         <Sidebar/>
       </Sider>
-      <Col>
+      <Col className={styles.right}>
         <Outlet/>
       </Col>
     </Layout>

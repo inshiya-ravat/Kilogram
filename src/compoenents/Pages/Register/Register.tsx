@@ -15,6 +15,7 @@ import Form from "antd/es/form";
 import Input from "antd/es/input";
 import Button from "antd/es/button";
 import useNotification from "antd/es/notification/useNotification";
+import { AUTH_ERROR } from "../../../constants/error.constants";
 
 const { Title, Text } = Typography;
 
@@ -25,8 +26,7 @@ const Register = () => {
   const [api, contextHolder] = useNotification();
   const navigate = useNavigate();
 
-  const handleSubmit: FormProps<CreateAuthFormType>["onFinish"] = async (
-  ) => {
+  const handleSubmit: FormProps<CreateAuthFormType>["onFinish"] = async () => {
     try {
       await form.validateFields();
       const formValues = form.getFieldsValue();
@@ -44,7 +44,7 @@ const Register = () => {
       }
     } catch {
       api.error({
-        message: `Registration failed`,
+        message: AUTH_ERROR.REGISTER_FAIL,
         placement: "topRight",
       });
     }

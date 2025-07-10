@@ -16,6 +16,7 @@ import Input from "antd/es/input";
 import Checkbox from "antd/es/checkbox";
 import Button from "antd/es/button";
 import useNotification from "antd/es/notification/useNotification";
+import { AUTH_ERROR } from "../../../constants/error.constants";
 
 const { Title, Text } = Typography;
 
@@ -25,7 +26,9 @@ const Login = () => {
   const [api, contextHolder] = useNotification();
   const navigate = useNavigate();
 
-  const handleSubmit:FormProps<Omit<CreateAuthFormType,"email">>['onFinish'] = async () => {
+  const handleSubmit: FormProps<
+    Omit<CreateAuthFormType, "email">
+  >["onFinish"] = async () => {
     try {
       await form.validateFields();
       const formValues = form.getFieldsValue();
@@ -36,14 +39,14 @@ const Login = () => {
           formValues[CreateAuthForm.Password]?.trim() || "",
       };
       const response = await dispatch(loginUser(formData)).unwrap();
-      if(response?.status === 200){
+      if (response?.status === 200) {
         navigate(ROUTE.HOME);
       }
-    } catch {
+    }catch{
       api.error({
-        message: `Log in failed`,
-        placement: "topRight",
-      });
+        message: AUTH_ERROR.LOGIN_FAIL,
+        placement: "topRight"
+      })
     }
   };
   return (
@@ -70,10 +73,7 @@ const Login = () => {
               name={CreateAuthForm.Password}
               rules={createAuthFormRules[CreateAuthForm.Password]}
             >
-              <Input.Password
-                placeholder="Password"
-                className={styles.input}
-              />
+              <Input.Password placeholder="Password" className={styles.input} />
             </Form.Item>
             <Form.Item>
               <Checkbox className={styles.rememberMe}>Remember me</Checkbox>

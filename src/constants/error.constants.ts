@@ -8,3 +8,7 @@ export const FIELDS_VALIDATION_MESSAGE = {
   NO_PASSWORD: 'Please input your password!',
   VALID_PASSWORD: 'Password must be at least 6 characters long',
 };
+export const AUTH_ERROR = {
+  LOGIN_FAIL: "Login failed. Please try again!",
+  REGISTER_FAIL: "Failed to register you. Please try again!"
+}
